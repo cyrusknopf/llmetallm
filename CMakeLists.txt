@@ -11,10 +11,10 @@ include_directories(${CMAKE_SOURCE_DIR}/metal)
 
 add_custom_command(
     OUTPUT ${CMAKE_BINARY_DIR}/default.metallib
-    COMMAND xcrun -sdk macosx metal -c ${KERNEL_DIR}/matmul.metal -o ${CMAKE_BINARY_DIR}/matmul.air
-    COMMAND xcrun -sdk macosx metallib ${CMAKE_BINARY_DIR}/matmul.air -o ${CMAKE_BINARY_DIR}/default.metallib
-    DEPENDS ${CMAKE_SOURCE_DIR}/kernels/matmul.metal
-    COMMENT "Compiling Metal compute shader..."
+    COMMAND xcrun -sdk macosx metal -c ${KERNEL_DIR}/matrix.metal -o ${CMAKE_BINARY_DIR}/matrix.air
+    COMMAND xcrun -sdk macosx metallib ${CMAKE_BINARY_DIR}/matrix.air -o ${CMAKE_BINARY_DIR}/default.metallib
+    DEPENDS ${CMAKE_SOURCE_DIR}/kernels/matrix.metal
+    COMMENT "Compiling Metal kernels..."
 )
 
 add_executable(llmetallm main.cpp metal_impl.cpp)
